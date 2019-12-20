@@ -1,0 +1,18 @@
+.header {
+  background: #007cc2;
+  display: flex;
+}
+
+.list-checkbox {
+  padding: 1rem 1rem 1rem 0;
+}
+
+.list-checkbox ul {
+  border-right: 1px solid #e5e5e5;
+  color: white;
+}
+
+.list-checkbox ul li {
+  padding: 1rem 1rem;
+  list-style: none;
+}

@@ -1,0 +1,94 @@
+.container {
+  padding: 0;
+  margin: 0;
+  background: #00275e;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+}
+.left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  overflow: hidden;
+  background: url('./img/aeromexico-grande.jpg') no-repeat center center/cover;
+  width: 20vw;
+  padding: 2rem;
+}
+
+.left ul {
+  display: flex;
+  list-style: none;
+}
+
+.left ul li {
+  margin: 1rem 1rem 1rem 0;
+}
+
+.left ul li a {
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1rem;
+  color: white;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+}
+
+.right ul {
+  display: flex;
+  list-style: none;
+  border-right: 1px solid grey;
+}
+
+.right ul li {
+  margin: 1rem 1rem 1rem 0;
+}
+
+.right ul li a {
+  text-decoration: none;
+  font-size: 0.8rem;
+  color: white;
+}
+
+.right ul li a:hover {
+  color: blue;
+}
+
+.others {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.others .letter-icon {
+  margin: 1rem;
+}
+.others .letter-icon:hover {
+  color: blue;
+}
+
+.others .flag-icon {
+  overflow: hidden;
+  background: url('./img/download-1.png') no-repeat center center/cover;
+  width: 0.8rem;
+  padding: 0.8rem;
+  border-radius: 50%;
+  margin: 1rem;
+}
+.others .sesion a {
+  text-decoration: none;
+  font-size: 0.8rem;
+  color: white;
+}
+
+.others .sesion a:hover {
+  color: blue;
+}
