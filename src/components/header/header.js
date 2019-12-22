@@ -1,43 +1,37 @@
 import React, { useState } from 'react';
-import './header.css';
-import SeachByDestiny from './searchByDestiny';
-import SearchByFly from './searchByFly';
-
+import './header.scss';
+import SeachForm from './searchForm/form';
+import SearchByFly from './searchByFly/form';
 function Header() {
-  const [kindSearch, serKindSearch] = useState(true);
+  const [kindSearch, setKindSearch] = useState(true);
   return (
-    <div className="header">
-      <div className="list-checkbox">
-        <ul>
-          <li>
+    <header className="header">
+      <div className="header-container">
+        <form className="list-inputs">
+          <div className="input">
             <input
-              className="form-check-input"
               type="radio"
-              name="inlineRadioOptions"
-              value={true}
+              name="kindOfSearch"
               onClick={e => {
-                serKindSearch(true);
+                setKindSearch(true);
               }}
             />
-            <label> Destino</label>
-          </li>
-          <li>
+            <label name="kindOfSearch"> Destino</label>
+          </div>
+          <div className="input">
             <input
-              className="form-check-input"
               type="radio"
-              name="inlineRadioOptions"
+              name="kindOfSearch"
               onClick={e => {
-                serKindSearch(false);
+                setKindSearch(false);
               }}
-              value={false}
             />
-
-            <label> Numero de Vuelo</label>
-          </li>
-        </ul>
+            <label name="kindOfSearch"> Numero de Vuelo</label>
+          </div>
+        </form>
+        {kindSearch ? <SeachForm /> : <SearchByFly />}
       </div>
-      {kindSearch ? <SeachByDestiny /> : <SearchByFly />}
-    </div>
+    </header>
   );
 }
 

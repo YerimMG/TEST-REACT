@@ -1,5 +1,6 @@
 import React from 'react';
-import './navbar.css';
+
+import './navbar.scss';
 
 function Navbar() {
   return (
@@ -9,7 +10,10 @@ function Navbar() {
         <div>
           <ul>
             <li>
-              <a href="#"> Reserva Tu Viaje</a>
+              <a href="#"> Reserva</a>
+            </li>
+            <li>
+              <a href="#"> Tu Viaje</a>
             </li>
             <li>
               <a href="#">Check-In</a>
@@ -45,7 +49,9 @@ function Navbar() {
         </div>
         <div className="others">
           <div className="letter-icon">
-            <i className="far fa-envelope fa-x3"></i>
+            <a href="#">
+              <i className="far fa-envelope fa-x1"></i>
+            </a>
           </div>
           <div className="flag-icon"></div>
           <div className="sesion">

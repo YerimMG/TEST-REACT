@@ -1,0 +1,35 @@
+@import '../../variables.scss';
+
+header {
+  background: $secondary-color;
+  padding: 20px 80px;
+
+  .header-container {
+    display: flex;
+    .list-inputs {
+      border-right: 1px solid $light-color;
+      display: flex;
+      height: 11rem;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-content: center;
+      .input {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding-right: 1rem;
+        height: 3rem;
+        margin: 1rem;
+        input {
+          margin: 0;
+          padding: 0;
+        }
+        label {
+          padding: 1rem;
+          font-size: 1.4rem;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}

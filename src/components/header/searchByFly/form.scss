@@ -1,0 +1,90 @@
+@import '../../../variables.scss';
+
+.form-container {
+  // background-color: red;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  margin: 1rem 1rem;
+  align-items: flex-end;
+  .group-form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    div {
+      margin: 1rem;
+    }
+    label {
+      color: rgba(225, 225, 225, 0.5);
+      display: block;
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    select {
+      color: black;
+      padding: 1.5rem 2rem;
+      border-radius: 2px;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      padding: 2rem;
+      border: 0;
+      font-size: 1.8rem;
+      &:focus {
+        border-color: white;
+      }
+    }
+    input[type='submit'] {
+      background: $buttons-color;
+      border-radius: 25px;
+      color: $light-color;
+      font-weight: bold;
+      margin-left: 2rem;
+
+      &:hover {
+        background-color: red;
+      }
+    }
+  }
+  button {
+    width: 5rem;
+    height: 5rem;
+    border: 0;
+    border-radius: 50%;
+    color: white;
+    background-color: $buttons-color;
+    i {
+      font-size: 2rem;
+    }
+    &:hover {
+      background-color: red;
+    }
+  }
+}
+
+// button {
+//   width: 3rem;
+//   height: 3rem;
+//   border: 0;
+//   border-radius: 50%;
+//   color: white;
+//   background-color: #004990;
+// }
+// button:hover {
+//   background-color: red;
+// }
+// .form-container a {
+//   font-weight: bold;
+//   background: #004990;
+//   text-decoration: none;
+//   color: white;
+//   border-radius: 40px;
+//   margin: 20px;
+//   padding: 1.3rem 2rem;
+//   border: 1px;
+// }
+
+// .form-container a:hover {
+//   background-color: red;
+// }
