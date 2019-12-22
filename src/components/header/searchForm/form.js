@@ -23,8 +23,17 @@ function Form() {
     <div className="form-container">
       <form className="group-form">
         <div>
-          <label htmlFor="">Número de vuelo</label>
+          <label htmlFor="">Origen | Ver todos</label>
           <Input placeholder="Origen" type="text" />
+        </div>
+        <div>
+          <button>
+            <i className="fas fa-arrows-alt-h fa-x3"> </i>
+          </button>
+        </div>
+        <div>
+          <label htmlFor="">Destino | Ver todos</label>
+          <Input placeholder="Destino" type="text" />
         </div>
 
         <div>
