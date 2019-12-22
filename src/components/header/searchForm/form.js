@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './form.scss';
 import Input from '../../helpers/TextInput/textInput';
 function Form() {
+  let [data, setData] = useState({
+    origin: '',
+    destination: '',
+    date: ''
+  });
   let date = new Date();
   let month = date.getMonth();
   const monthNames = [
@@ -18,13 +23,28 @@ function Form() {
     'Noviembre',
     'Diciembre'
   ];
+  const dataSearch = e => {
+    setData({
+      ...data,
+      [e.target.name]: e.target.value
+    });
+  };
+  const getData = e => {
+    e.preventDefault();
+    console.log(data);
+  };
 
   return (
     <div className="form-container">
-      <form className="group-form">
+      <form className="group-form" onSubmit={getData}>
         <div>
           <label htmlFor="">Origen | Ver todos</label>
-          <Input placeholder="Origen" type="text" />
+          <Input
+            placeholder="Origen"
+            type="text"
+            name="origin"
+            onChange={dataSearch}
+          />
         </div>
         <div>
           <button>
@@ -33,19 +53,23 @@ function Form() {
         </div>
         <div>
           <label htmlFor="">Destino | Ver todos</label>
-          <Input placeholder="Destino" type="text" />
+          <Input
+            placeholder="Destino"
+            type="text"
+            name="destination"
+            onChange={dataSearch}
+          />
         </div>
-
         <div>
           <label htmlFor="">Fecha de salida</label>
-          <select name="date">
-            <option value="volvo">{`${date.getDate() - 1} de ${
+          <select name="date" name="date" onChange={dataSearch}>
+            <option value="yesterday">{`${date.getDate() - 1} de ${
               monthNames[month]
             }`}</option>
-            <option value="volvo" selected="selected">{`${date.getDate()} de ${
+            <option value="today">{`${date.getDate()} de ${
               monthNames[month]
             }`}</option>
-            <option value="saab">{`${date.getDate() + 1} de ${
+            <option value="tomorrow">{`${date.getDate() + 1} de ${
               monthNames[month]
             }`}</option>
           </select>
