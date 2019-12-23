@@ -59,15 +59,20 @@ function Form() {
         </div>
 
         <div>
-          <label htmlFor="">Fecha de salida</label>
-          <select name="date" onChange={dataSearch}>
-            <option value={`${year}-${month}-${day - 1}`}>{`${day - 1} de ${
+          <label>Fecha de salida</label>
+          <select
+            name="date"
+            defaultValue={{ label: day, value: `${year}-12-${day}` }}
+            onChange={dataSearch}
+          >
+            <option value=""></option>
+            <option value={`${year}-12-${day - 1}`}>{`${day - 1} de ${
               monthNames[month]
             }`}</option>
             <option
-              value={`${year}-${month}-${day}`}
+              value={`${year}-12-${day}`}
             >{`${day} de ${monthNames[month]}`}</option>
-            <option value={`${year}-${month}-${day + 1}`}>{`${day + 1}  de ${
+            <option value={`${year}-12-${day + 1}`}>{`${day + 1}  de ${
               monthNames[month]
             }`}</option>
           </select>
