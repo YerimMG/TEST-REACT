@@ -11,12 +11,7 @@ function Form() {
     number: ''
   });
 
-  const {
-    state: { allAirport, infoAirports, data },
-    getAirports,
-    getinfoAirport,
-    getFlights
-  } = useContext(AirpostContext);
+  const { state, getFlights } = useContext(AirpostContext);
 
   let date = new Date();
   let year = date.getFullYear();
