@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import './header.scss';
 import SeachForm from './searchForm/form';
 import SearchByFly from './searchByFly/form';
-function Header() {
+
+const Header = () => {
   const [kindSearch, setKindSearch] = useState(true);
+
   return (
     <header className="header">
       <div className="header-container">
@@ -33,6 +35,6 @@ function Header() {
       </div>
     </header>
   );
-}
+};
 
 export default Header;

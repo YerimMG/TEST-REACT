@@ -2,12 +2,16 @@ import React from 'react';
 import './App.scss';
 import Navbar from './components/navbar';
 import Header from './components/header';
+import { Provider as DataProvider } from './components/context/getAirportsData';
+
 function App() {
   return (
-    <div className="App">
-      <Navbar />
-      <Header />
-    </div>
+    <DataProvider>
+      <div className="App">
+        <Navbar />
+        <Header />
+      </div>
+    </DataProvider>
   );
 }
 

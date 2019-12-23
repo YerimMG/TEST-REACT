@@ -1,12 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import './form.scss';
 import Input from '../../helpers/TextInput/textInput';
+import { Context as ExampleContext } from '../../context/getAirportsData';
+// import TextField from '@material-ui/core/TextField';
+// import Autocomplete from '@material-ui/lab/Autocomplete';
+// import color from '@material-ui/core/colors/amber';
+// import Autocomplete from '../../helpers/TextInput/autoComplete/autocomplete';
 function Form() {
-  let [data, setData] = useState({
+  let options = ['1', '2', '3', '4', '5'];
+  let [info, setInfo] = useState({
     origin: '',
     destination: '',
     date: ''
   });
+  const {
+    state: { data },
+    getData
+  } = useContext(ExampleContext);
   let date = new Date();
   let month = date.getMonth();
   const monthNames = [
@@ -23,22 +33,28 @@ function Form() {
     'Noviembre',
     'Diciembre'
   ];
+  useEffect(() => {
+    getData();
+  }, []);
+  // useEffect(() => {
+  //   console.log(data);
+  // }, [data]);
   const dataSearch = e => {
-    setData({
-      ...data,
+    setInfo({
+      ...info,
       [e.target.name]: e.target.value
     });
   };
-  const getData = e => {
+  const getInfo = e => {
     e.preventDefault();
-    console.log(data);
+    console.log(info);
   };
 
   return (
     <div className="form-container">
-      <form className="group-form" onSubmit={getData}>
+      <form className="group-form" onSubmit={getInfo} autoComplete="off">
         <div>
-          <label htmlFor="">Origen | Ver todos</label>
+          <label>Origen | Ver todos</label>
           <Input
             placeholder="Origen"
             type="text"
