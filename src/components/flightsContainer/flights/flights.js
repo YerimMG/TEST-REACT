@@ -37,19 +37,21 @@ function useFlights() {
               <p>Destino</p>
             </li>
           </div>
-        </ul>
-        <Flight
-          number={'995'}
-          status={'A tiempo'}
-          originCode={'CUN'}
-          originTermial={'1TER'}
-          originGate={'4AB'}
-          departure={'09:10'}
-          arrival={'13:30'}
-          destinyCode={'USA'}
-          destGate={'1TER'}
-          destTermial={'1TER'}
-        />
+        </ul>{' '}
+        {flights.map(flight => (
+          <Flight
+            number={flight._collection[0].segment.marketingFlightCode}
+            status={flight._collection[0].status}
+            originCode={flight._collection[0].segment.departureAirport}
+            originTermial={flight._collection[0].boardingTerminal}
+            originGate={flight._collection[0].boardingGate}
+            departure={flight._collection[0].boardingTime}
+            arrival={flight._collection[0].boardingTime}
+            destinyCode={flight._collection[0].segment.arrivalAirport}
+            destGate={flight._collection[0].arrivalGate}
+            destTermial={flight._collection[0].arrivalTerminal}
+          />
+        ))}
       </div>
     </div>
   );

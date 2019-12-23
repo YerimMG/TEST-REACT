@@ -45,7 +45,7 @@ const getinfoAirport = dispatch => async e => {
 
 const getFlights = dispatch => async doc => {
   try {
-    let url = `https://mad.amlab7.com/api/v1/checkin/flight-status?store=mx&pos=WEB&flight=${doc.number}&date=${doc.date}origin=${doc.origin}&destination=${doc.destination}`;
+    let url = `https://mad.amlab7.com/api/v1/checkin/flight-status?store=mx&pos=WEB&flight=${doc.number}&date=${doc.date}&origin=${doc.origin}&destination=${doc.destination}`;
     const res = await axios.get(url);
     dispatch({ type: 'get_Flights', payload: res.data._collection });
   } catch (err) {
@@ -59,5 +59,5 @@ const getFlights = dispatch => async doc => {
 export const { Provider, Context } = createDataContext(
   codeReducer,
   { getAirports, getinfoAirport, getFlights },
-  { allAirport: null, infoAirports: null, data: null, flights: null }
+  { allAirport: null, infoAirports: null, data: null, flights: [] }
 );
