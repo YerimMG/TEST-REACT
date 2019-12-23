@@ -1,24 +1,31 @@
 import React, { useState, useContext, useEffect } from 'react';
 import './form.scss';
 import Input from '../../helpers/TextInput/textInput';
-import { Context as ExampleContext } from '../../context/getAirportsData';
+import { Context as AirpostContext } from '../../context/getAirportsData';
 // import TextField from '@material-ui/core/TextField';
 // import Autocomplete from '@material-ui/lab/Autocomplete';
 // import color from '@material-ui/core/colors/amber';
 // import Autocomplete from '../../helpers/TextInput/autoComplete/autocomplete';
 function Form() {
-  let options = ['1', '2', '3', '4', '5'];
   let [info, setInfo] = useState({
     origin: '',
     destination: '',
-    date: ''
+    date: '',
+    number: ''
   });
+
   const {
-    state: { data },
-    getData
-  } = useContext(ExampleContext);
+    state: { allAirport, infoAirports, data },
+    getAirports,
+    getinfoAirport,
+    getFlights
+  } = useContext(AirpostContext);
+
   let date = new Date();
+  let year = date.getFullYear();
   let month = date.getMonth();
+  let day = date.getDate();
+
   const monthNames = [
     'Enero',
     'Febereo',
@@ -33,21 +40,22 @@ function Form() {
     'Noviembre',
     'Diciembre'
   ];
+
   useEffect(() => {
-    getData();
+    getAirports();
+    getinfoAirport();
   }, []);
-  // useEffect(() => {
-  //   console.log(data);
-  // }, [data]);
+
   const dataSearch = e => {
     setInfo({
       ...info,
       [e.target.name]: e.target.value
     });
   };
+
   const getInfo = e => {
     e.preventDefault();
-    console.log(info);
+    getFlights(info);
   };
 
   return (
@@ -77,15 +85,20 @@ function Form() {
           />
         </div>
         <div>
-          <label htmlFor="">Fecha de salida</label>
-          <select name="date" name="date" onChange={dataSearch}>
-            <option value="yesterday">{`${date.getDate() - 1} de ${
+          <label>Fecha de salida</label>
+          <select
+            name="date"
+            defaultValue={{ label: day, value: `${year}-${month}-${day}` }}
+            onChange={dataSearch}
+          >
+            <option value=""></option>
+            <option value={`${year}-${month}-${day - 1}`}>{`${day - 1} de ${
               monthNames[month]
             }`}</option>
-            <option value="today">{`${date.getDate()} de ${
-              monthNames[month]
-            }`}</option>
-            <option value="tomorrow">{`${date.getDate() + 1} de ${
+            <option
+              value={`${year}-${month}-${day}`}
+            >{`${day} de ${monthNames[month]}`}</option>
+            <option value={`${year}-${month}-${day + 1}`}>{`${day + 1}  de ${
               monthNames[month]
             }`}</option>
           </select>

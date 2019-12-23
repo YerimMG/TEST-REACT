@@ -1,13 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './form.scss';
 import Input from '../../helpers/TextInput/textInput';
+import { Context as AirpostContext } from '../../context/getAirportsData';
+
 function Form() {
-  let [data, setData] = useState({
-    number: '',
-    date: ''
+  let [info, setInfo] = useState({
+    origin: '',
+    destination: '',
+    date: '',
+    number: ''
   });
+
+  const {
+    state: { allAirport, infoAirports, data },
+    getAirports,
+    getinfoAirport,
+    getFlights
+  } = useContext(AirpostContext);
+
   let date = new Date();
+  let year = date.getFullYear();
   let month = date.getMonth();
+  let day = date.getDate();
+
   const monthNames = [
     'Enero',
     'Febereo',
@@ -22,16 +37,19 @@ function Form() {
     'Noviembre',
     'Diciembre'
   ];
+
   const dataSearch = e => {
-    setData({
-      ...data,
+    setInfo({
+      ...info,
       [e.target.name]: e.target.value
     });
   };
+
   const getData = e => {
     e.preventDefault();
-    console.log(data);
+    getFlights(info);
   };
+
   return (
     <div className="form-container">
       <form className="group-form" onSubmit={getData}>
@@ -48,13 +66,13 @@ function Form() {
         <div>
           <label htmlFor="">Fecha de salida</label>
           <select name="date" onChange={dataSearch}>
-            <option value="yesterday">{`${date.getDate() - 1} de ${
+            <option value={`${year}-${month}-${day - 1}`}>{`${day - 1} de ${
               monthNames[month]
             }`}</option>
-            <option value="today">{`${date.getDate()} de ${
-              monthNames[month]
-            }`}</option>
-            <option value="tomorrow">{`${date.getDate() + 1} de ${
+            <option
+              value={`${year}-${month}-${day}`}
+            >{`${day} de ${monthNames[month]}`}</option>
+            <option value={`${year}-${month}-${day + 1}`}>{`${day + 1}  de ${
               monthNames[month]
             }`}</option>
           </select>
