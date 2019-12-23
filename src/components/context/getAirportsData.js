@@ -45,7 +45,8 @@ const getinfoAirport = dispatch => async e => {
 
 const getFlights = dispatch => async doc => {
   try {
-    let url = `https://mad.amlab7.com/api/v1/checkin/flight-status?store=mx&pos=WEB&flight=&date=2019-12-23&origin=MEX&destination=CUN`;
+    let url = `https://mad.amlab7.com/api/v1/checkin/flight-status?store=mx&pos=WEB&flight=${doc.number}&date=${doc.date}origin=${doc.origin}&destination=${doc.destination}`;
+    // let url = `https://mad.amlab7.com/api/v1/checkin/flight-status?store=mx&pos=WEB&flight=&date=2019-12-23&origin=MEX&destination=CUN`;
     const res = await axios.get(url);
     dispatch({ type: 'get_Flights', payload: res.data._collection });
   } catch (err) {
