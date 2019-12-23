@@ -1,22 +1,26 @@
 import React, { useState, useContext, useEffect } from 'react';
 import './form.scss';
 import Input from '../../helpers/TextInput/textInput';
-import { Context as ExampleContext } from '../../context/getAirportsData';
+import { Context as AirpostContext } from '../../context/getAirportsData';
 // import TextField from '@material-ui/core/TextField';
 // import Autocomplete from '@material-ui/lab/Autocomplete';
 // import color from '@material-ui/core/colors/amber';
 // import Autocomplete from '../../helpers/TextInput/autoComplete/autocomplete';
 function Form() {
-  let options = ['1', '2', '3', '4', '5'];
   let [info, setInfo] = useState({
     origin: '',
     destination: '',
-    date: ''
+    date: '',
+    number: ''
   });
+
   const {
-    state: { data },
-    getData
-  } = useContext(ExampleContext);
+    state: { allAirport, infoAirports, data },
+    getAirports,
+    getinfoAirport,
+    getFlights
+  } = useContext(AirpostContext);
+
   let date = new Date();
   let month = date.getMonth();
   const monthNames = [
@@ -33,21 +37,22 @@ function Form() {
     'Noviembre',
     'Diciembre'
   ];
+
   useEffect(() => {
-    getData();
+    getAirports();
+    getinfoAirport();
   }, []);
-  // useEffect(() => {
-  //   console.log(data);
-  // }, [data]);
+
   const dataSearch = e => {
     setInfo({
       ...info,
       [e.target.name]: e.target.value
     });
   };
+
   const getInfo = e => {
     e.preventDefault();
-    console.log(info);
+    getFlights(info);
   };
 
   return (

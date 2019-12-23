@@ -1,11 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './form.scss';
 import Input from '../../helpers/TextInput/textInput';
+import { Context as AirpostContext } from '../../context/getAirportsData';
+
 function Form() {
-  let [data, setData] = useState({
-    number: '',
-    date: ''
+  let [info, setInfo] = useState({
+    origin: '',
+    destination: '',
+    date: '',
+    number: ''
   });
+
+  const {
+    state: { allAirport, infoAirports, data },
+    getAirports,
+    getinfoAirport,
+    getFlights
+  } = useContext(AirpostContext);
+
   let date = new Date();
   let month = date.getMonth();
   const monthNames = [
@@ -23,14 +35,15 @@ function Form() {
     'Diciembre'
   ];
   const dataSearch = e => {
-    setData({
-      ...data,
+    setInfo({
+      ...info,
       [e.target.name]: e.target.value
     });
   };
   const getData = e => {
     e.preventDefault();
-    console.log(data);
+    getFlights(info);
+    // 2019-12-23
   };
   return (
     <div className="form-container">
