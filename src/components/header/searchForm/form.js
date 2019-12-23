@@ -2,10 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import './form.scss';
 import Input from '../../helpers/TextInput/textInput';
 import { Context as AirpostContext } from '../../context/getAirportsData';
-// import TextField from '@material-ui/core/TextField';
-// import Autocomplete from '@material-ui/lab/Autocomplete';
-// import color from '@material-ui/core/colors/amber';
-// import Autocomplete from '../../helpers/TextInput/autoComplete/autocomplete';
+
 function Form() {
   let [info, setInfo] = useState({
     origin: '',

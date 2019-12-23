@@ -1,0 +1,58 @@
+@import '../../../../variables.scss';
+
+.flight {
+  .headers {
+    margin: 3rem 4rem 1rem 4rem;
+    padding-bottom: 2rem;
+    display: flex;
+    list-style: none;
+    border-bottom: 1px solid rgba(165, 165, 165, 0.3);
+
+    .left {
+      display: flex;
+      justify-content: space-around;
+      flex: 1;
+      li:first-child {
+        font-weight: bold;
+        align-self: center;
+      }
+      li:last-child {
+        padding-left: 9rem;
+      }
+    }
+    .center {
+      justify-content: flex-start;
+      display: flex;
+      flex: 1;
+      li:first-child {
+        margin: 0 8rem 0 2rem;
+        p {
+          font-size: 1rem;
+        }
+      }
+    }
+    .right {
+      justify-content: space-evenly;
+      display: flex;
+      flex: 1;
+      li:last-child {
+        p {
+          font-size: 1rem;
+        }
+      }
+    }
+    .element {
+      margin: 1rem;
+      display: flex;
+      margin-right: 4rem;
+    }
+    p {
+      font-size: 2rem;
+      color: $primary-color;
+    }
+    h3 {
+      color: $primary-color;
+      font-size: 2rem;
+    }
+  }
+}
