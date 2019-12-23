@@ -1,0 +1,23 @@
+.suggestions {
+  position: absolute;
+  height: inherit;
+  border: 0;
+  list-style: none;
+  background: white;
+  color: black;
+}
+
+.suggestions li {
+  padding: 0.5rem;
+  color: black;
+  padding: 1rem;
+  font-size: 2rem;
+}
+
+.suggestion-active,
+.suggestions li:hover {
+  background-color: white;
+  color: black;
+  cursor: pointer;
+  font-weight: bold;;
+}
