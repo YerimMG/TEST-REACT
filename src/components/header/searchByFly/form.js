@@ -19,7 +19,10 @@ function Form() {
   } = useContext(AirpostContext);
 
   let date = new Date();
+  let year = date.getFullYear();
   let month = date.getMonth();
+  let day = date.getDate();
+
   const monthNames = [
     'Enero',
     'Febereo',
@@ -34,17 +37,19 @@ function Form() {
     'Noviembre',
     'Diciembre'
   ];
+
   const dataSearch = e => {
     setInfo({
       ...info,
       [e.target.name]: e.target.value
     });
   };
+
   const getData = e => {
     e.preventDefault();
     getFlights(info);
-    // 2019-12-23
   };
+
   return (
     <div className="form-container">
       <form className="group-form" onSubmit={getData}>
@@ -61,13 +66,13 @@ function Form() {
         <div>
           <label htmlFor="">Fecha de salida</label>
           <select name="date" onChange={dataSearch}>
-            <option value="yesterday">{`${date.getDate() - 1} de ${
+            <option value={`${year}-${month}-${day - 1}`}>{`${day - 1} de ${
               monthNames[month]
             }`}</option>
-            <option value="today">{`${date.getDate()} de ${
-              monthNames[month]
-            }`}</option>
-            <option value="tomorrow">{`${date.getDate() + 1} de ${
+            <option
+              value={`${year}-${month}-${day}`}
+            >{`${day} de ${monthNames[month]}`}</option>
+            <option value={`${year}-${month}-${day + 1}`}>{`${day + 1}  de ${
               monthNames[month]
             }`}</option>
           </select>
